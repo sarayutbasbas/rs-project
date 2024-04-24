@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
+import BG from '../../public/images/bg.png';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-[#D3D5CE]`}>
+        <div className="w-full sm:h-[191px] md:h-[305px] lg:h-[375px]">
+          <Image
+            src={BG}
+            alt=""
+            width={1920}
+            height={375}
+            className="relative w-full h-full max-h-[194px] min-h-[194px] md:max-h-full object-cover opacity-95"
+          />
+          <div className="absolute top-[45px] md:top-[90px] lg:top-[100px] w-[194px] md:w-[264px] flex flex-col left-1/2 translate-x-[-50%]">
+            <div className="text-3xl md:text-5xl lg:text-6xl text-white stroke-[#000000]">เที่ยว</div>
+            <div className="text-3xl md:text-5xl lg:text-6xl text-[#93B136]">เมืองรอง</div>
+            <div className="text-xl md:text-3xl lg:text-3xl text-white ml-[52px]">ต้องลองแล้วจะรัก</div>
+          </div>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
