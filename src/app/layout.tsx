@@ -25,7 +25,7 @@ export default function RootLayout({
             alt=""
             width={1920}
             height={375}
-            className="relative w-full h-full max-h-[194px] min-h-[194px] md:max-h-full object-cover opacity-95"
+            className="relative w-full h-full max-h-[194px] min-h-[194px] md:max-h-full object-cover"
           />
           <div className="absolute top-[45px] md:top-[90px] lg:top-[100px] w-[194px] md:w-[264px] flex flex-col left-1/2 translate-x-[-50%]">
             <div className="text-3xl md:text-5xl lg:text-6xl text-white stroke-[#000000]">เที่ยว</div>
