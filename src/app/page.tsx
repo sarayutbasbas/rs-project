@@ -13,11 +13,11 @@ export default function Home() {
             <div className="w-full md:w-1/2 lg:w-[33%] rounded-xl p-2 pb-4">
               <Link href={`/questions/${region.id}`} key={region.id} className="">
                 <Image
-                  src="/images/bg.jpg"
-                  className="w-full object-cover h-[200px] rounded-xl shadow-md"
+                  src={region.image}
+                  className="w-full object-cover h-[300px] rounded-xl shadow-md"
                   alt=""
                   width={1920}
-                  height={375}
+                  height={505}
                 />
                 <div className="text-2xl text-center">{region.name}</div>
               </Link>

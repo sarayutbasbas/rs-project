@@ -8,9 +8,10 @@ const a = () => {
     const { id } = useParams()
     const questions = getQuestionsById(id as string)
     return (
-        <div>
-            <div>{}</div>
-            <div className="p-8">
+        <div className="p-8">
+            <div>{id}</div>
+            <div className="text-xl">กรุณาตอบคำถามให้ตรงกับความต้องการของคุณ</div>
+            <div className="mt-8">
                 {questions.length > 0 && questions.map((question: Question | undefined, index: number) => (
                     <div key={question?.id} className="pb-8">
                         <div className="pb-2">{index + 1}. {question?.question}</div>
