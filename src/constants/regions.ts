@@ -6,7 +6,7 @@ const RegionsKey = {
     SOUTH: 'south'
 }
 
-const RegionsData = [
+export const RegionsData = [
     {
       id: RegionsKey.NORTH,
       name: 'ภาคเหนือ',
