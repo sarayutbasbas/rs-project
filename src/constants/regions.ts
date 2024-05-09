@@ -1,7 +1,7 @@
 const RegionsKey = {
     NORTH: 'north',
     CENTRAL: 'central',
-    EASTERN: 'eastern',
+    EASTERN: 'east',
     NORTHEAST: 'northeast',
     SOUTH: 'south'
 }

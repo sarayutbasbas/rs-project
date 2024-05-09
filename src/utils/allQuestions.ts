@@ -12,7 +12,7 @@ export interface Question {
     }[]
 
 }
-const allQuestions: Question[] = [
+export const allQuestions: any[] = [
     {
         id: 'Month',
         order: 1,
@@ -644,89 +644,97 @@ const allQuestions: Question[] = [
     
 ]
 
+export const questionsByRegion: any = {
+  central: [
+    'Month',
+    'Activity',
+    'Budget_Food',
+    'Package',
+    'Stay',
+    'Age_Range',
+    'Career',
+    'Salary'
+  ],
+  north: [
+    'Month',
+    'Budget_Transportation',
+    'Activity',
+    'Budget_Food',
+    'Stay',
+    'Budget_Stay',
+    'Age_Range',
+    'Status',
+    'Education'
+  ],
+  east: [
+    'Month',
+    'How_to_go',
+    'Budget_Transportation',
+    'Who',
+    'Activity',
+    'StreetFood',
+    'Budget_Food',
+    'Package',
+    'Overnight',
+    'Night',
+    'Stay',
+    'Budget_Stay',
+    'Gender',
+    'Age_Range',
+    'Religion',
+    'Status',
+    'Career',
+    'Salary',
+    'Education'
+  ],
+  south: [
+    'Month',
+    'How_to_go',
+    'Budget_Transportation',
+    'Who',
+    'Activity',
+    'StreetFood',
+    'Budget_Food',
+    'Package',
+    'Overnight',
+    'Night',
+    'Stay',
+    'Budget_Stay',
+    'Gender',
+    'Age_Range',
+    'Religion',
+    'Status',
+    'Career',
+    'Salary',
+    'Education'
+  ],
+  northeast: [
+    'Budget_Transportation',
+    'Who',
+    'Activity',
+    'Budget_Food',
+    'Stay',
+    'Budget_Stay',
+    'Status',
+    'Education'
+  ]
+}
+
 const getQuestionsById = (id: string) => {
     let questionsId = []
     if (id === Regions.RegionsKey.NORTH) {
-        questionsId = [
-            'Month',
-            'Budget_Transportation',
-            // 'Activity',
-            // 'Budget_Food',
-            // 'Stay',
-            // 'Budget_Stay',
-            // 'Age_Range',
-            // 'Status',
-            // 'Education'
-        ]
+        questionsId = questionsByRegion.north
     } else if (id === Regions.RegionsKey.CENTRAL) {
-        questionsId = [
-            'Month',
-            'Activity',
-            'Budget_Food',
-            'Package',
-            'Stay',
-            'Age_Range',
-            'Career',
-            'Salary'
-        ]
+        questionsId = questionsByRegion.central
     } else if (id === Regions.RegionsKey.EASTERN) {
-        questionsId = [
-            'Month',
-            'How_to_go',
-            'Budget_Transportation',
-            'Who',
-            'Activity',
-            'StreetFood',
-            'Budget_Food',
-            'Package',
-            'Overnight',
-            'Night',
-            'Stay',
-            'Budget_Stay',
-            'Gender',
-            'Age_Range',
-            'Religion',
-            'Status',
-            'Career',
-            'Salary',
-            'Education'
-        ]
+        questionsId = questionsByRegion.east
     } else if (id === Regions.RegionsKey.NORTHEAST) {
-        questionsId = [
-            'Budget_Transportation',
-            'Who',
-            'Activity',
-            'Budget_Food',
-            'Stay',
-            'Budget_Stay',
-            'Status',
-            'Education'
-        ]
+        questionsId = questionsByRegion.northeast
     } else {
-        questionsId = [
-            'Month',
-            'How_to_go',
-            'Budget_Transportation',
-            'Who',
-            'Activity',
-            'StreetFood',
-            'Budget_Food',
-            'Package',
-            'Overnight',
-            'Night',
-            'Stay',
-            'Budget_Stay',
-            'Gender',
-            'Age_Range',
-            'Religion',
-            'Status',
-            'Career',
-            'Salary',
-            'Education'
-        ]
+        questionsId = questionsByRegion.south
     }
 
-    return questionsId.map(id => allQuestions.find(question => question.id === id))
+    return questionsId.map((id: any) => allQuestions.find(question => question.id === id))
 }
 
 export default getQuestionsById
