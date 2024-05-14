@@ -167,14 +167,6 @@ export const allQuestions: any[] = [
                 id: 'colleague',
                 text: 'เพื่อนร่วมงาน',
               },
-              {
-                id: '6001To7000',
-                text: '6,001 - 7,000 บาทท'
-              },
-              {
-                id: 'moreThan7000',
-                text: 'มากกว่า 7,001 บาท',
-              }
         ] 
     },
     {
