@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useForm, Controller, set } from 'react-hook-form';
 import { RegionsData } from '@/constants/regions';
+import Image from "next/image";
+import { mapResults } from '@/utils/mapResults';
 
 const transformData = (data: any, id: string) => {
     const result = {};
@@ -40,7 +42,7 @@ const QuestionsForm = () => {
 
     const onSubmit = (data: any) => {
         const newData = transformData(data, id as string)
-        fetch(`http://127.0.0.1:5000`, {
+        fetch(`https://b484-27-145-3-198.ngrok-free.app/`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -52,7 +54,7 @@ const QuestionsForm = () => {
             region: id,
             })
         }).then((response) => response.json())
-        //   .then((data) => setResult(data));
+          .then((data) => setResult(data));
     }
     
     const titleName = RegionsData.find(region => region.id === id)?.name
@@ -80,10 +82,49 @@ const QuestionsForm = () => {
         }
     }
 
+    const topFunction = () => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
     return (
-        <>
-            {result?.message
-                ? <div>{result.message}</div>
+        <>  
+            {/* <Image
+                src={`/images/[Samutsongkhram]_Amphawa Floating Market.jpg` || `/images/[Samutsongkhram]_Amphawa Floating Market.jpeg` || `/images/[Samutsongkhram]_Amphawa Floating Market.png`}
+                className="w-full object-cover h-[300px] rounded-xl shadow-md"
+                alt=""
+                width={1920}
+                height={505}
+            /> */}
+            {result?.results
+                ? 
+                <>
+                    <div className="flex flex-row flex-wrap md:basis-1/2 lg:basis-1/3 w-full items-center pt-6">
+                        {
+                            result?.results.map((item: any, index: number) => {
+                                const fileName = item.trim()
+                                const name = mapResults[fileName]
+                                return (
+                                    <div className="w-full md:w-1/2 lg:w-[33%] rounded-xl p-2 pb-4">
+                                        <Image
+                                            src={`/images/${fileName}.jpg`}
+                                            className="w-full object-cover h-[300px] rounded-xl shadow-md"
+                                            alt=""
+                                            width={1920}
+                                            height={505}
+                                        />
+                                        <div className="text-2xl text-center mt-4">อันดับ {index+1}. {name}</div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="flex justify-center align-center mb-8">
+                        <Link href="/">
+                            <Button variant="ghost" className="bg-[#2A230E] opacity-[50%] text-white">กลับหน้าหลัก</Button>
+                        </Link>
+                    </div>
+                </>
                 :
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="p-8">
@@ -148,7 +189,7 @@ const QuestionsForm = () => {
                             <Link href="/">
                                 <Button variant="ghost" className="bg-[#2A230E] opacity-[50%] text-white">หน้าหลัก</Button>
                             </Link>
-                            <Button variant="secondary" className="bg-emerald-500 ml-2" type="submit">
+                            <Button onClick={topFunction} variant="secondary" className="bg-emerald-500 ml-2" type="submit">
                                 ส่งคำตอบ
                             </Button>
                         </div>
