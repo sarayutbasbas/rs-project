@@ -11,7 +11,7 @@ export const mapResults = {
     '[Lopburi]_Pra Prang Sam Yod': 'พระปรางค์สามยอด, ลพบุรี',
     '[Angthong]_Wat Muang': 'วัดม่วง, อ่างทอง',
     '[Angthong]_Wat Phrathat Chedi Sri Pho Thong': 'วัดพระธาตุเจดีย์ศรีโพธิ์ทอง, อ่างทอง',
-    '[Ratchaburi]_Moo Ban Huai Nam Sai ': 'หมู่บ้านห้วยน้ําใส, ราชบุรี',
+    '[Ratchaburi]_Moo Ban Huai Nam Sai': 'หมู่บ้านห้วยน้ำใส, ราชบุรี',
     '[Satun]_Ko Lipe': 'เกาะหลีเป๊ะ, สตูล',
     '[Trang]_Morakot Cave': 'ถ้ำมรกต, ตรัง',
     '[Nakhonsithammarat]_Khiri Wong Village': 'หมู่บ้านคีรีวง, นครศรีธรรมราช',
