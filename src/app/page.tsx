@@ -19,7 +19,7 @@ export default function Home() {
                   width={1920}
                   height={505}
                 />
-                <div className="text-2xl text-center">{region.name}</div>
+                <div className="text-xl text-center">{region.name}</div>
               </Link>
             </div>
           ))

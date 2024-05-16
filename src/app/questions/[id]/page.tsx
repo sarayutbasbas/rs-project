@@ -43,8 +43,11 @@ const QuestionsForm = () => {
     const questions = getQuestionsById(id as string)
 
     const onSubmit = (data: any) => {
+        setLoading(true)
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         const newData = transformData(data, id as string)
-        fetch(`http://localhost:5000/`, {
+        fetch('https://2585-27-145-3-198.ngrok-free.app/', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -87,20 +90,14 @@ const QuestionsForm = () => {
         }
     }
 
-    const topFunction = () => {
-        setLoading(true)
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
-
     return (
         <> 
             {loading && <div className="m-10 flex justify-center align-center"><SpinnerImage /></div>}
-
             <>
                 {result?.results
                     ? 
                     <>
+                        <div className="text-center mt-10 text-2xl font-bold">5 สถานที่ท่องเที่ยวในเมืองรองที่เหมาะสมใน {titleName}</div>
                         <div className="flex flex-row flex-wrap md:basis-1/2 lg:basis-1/3 w-full items-center pt-6">
                             {
                                 result?.results.map((item: any, index: number) => {
@@ -115,7 +112,7 @@ const QuestionsForm = () => {
                                                 width={1920}
                                                 height={505}
                                             />
-                                            <div className="text-2xl text-center mt-4">อันดับ {index+1}. {name}</div>
+                                            <div className="text-md text-center mt-4"><label className="font-bold">อันดับ {index+1}.</label> {name}</div>
                                         </div>
                                     )
                                 })
@@ -124,6 +121,11 @@ const QuestionsForm = () => {
                         <div className="flex justify-center align-center mb-8">
                             <Link href="/">
                                 <Button variant="ghost" className="bg-[#2A230E] opacity-[50%] text-white">กลับหน้าหลัก</Button>
+                            </Link>
+                            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdXTPfFY8Iy70rqSqDf8oTi_-1dJCJM2Frqa2FA1kQZURtg_w/viewform">
+                                <Button variant="destructive" className="ml-8">
+                                    คลิกเพื่อทำแบบสอบถาม
+                                </Button>
                             </Link>
                         </div>
                     </>
@@ -159,7 +161,7 @@ const QuestionsForm = () => {
                                                             </SelectTrigger>
                                                             <SelectContent>
                                                                 <SelectGroup>
-                                                                    {question?.choices.map(choice => (
+                                                                    {question?.choices.map(choice => choice.id !== 'relativeHouse' &&(
                                                                         <SelectItem key={choice.id} value={choice.id}>
                                                                             {choice.text}
                                                                         </SelectItem>
@@ -191,7 +193,7 @@ const QuestionsForm = () => {
                                 <Link href="/">
                                     <Button variant="ghost" className="bg-[#2A230E] opacity-[50%] text-white">หน้าหลัก</Button>
                                 </Link>
-                                <Button onClick={topFunction} variant="secondary" className="bg-emerald-500 ml-2" type="submit">
+                                <Button variant="secondary" className="bg-emerald-500 ml-2" type="submit">
                                     ส่งคำตอบ
                                 </Button>
                             </div>
